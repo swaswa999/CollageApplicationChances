@@ -88,9 +88,6 @@ def index():
             print(f"Error: {str(e)}")
             return render_template('error.html')
 
-        finally:
-            conn.close()
-
     return render_template('index.html')
 
 
@@ -170,11 +167,14 @@ def success(fname):
             sports_participation = 10
 
         sat_scores = (int(recently_added_record[13]) / 1600) *10
+
+        currentPercentag = sat_scores *10
+
         act_scores = (int(recently_added_record[14]) / 36) *10
         ap_courses = (int(recently_added_record[15]) /38) *10
         unweighted_gpa = (float(recently_added_record[12]) /4.0) *10
         weighted_gpa = (float(recently_added_record[11])) /5.0  *10
-        portfolio = recently_added_record[23]  
+        portfolio = recently_added_record[23]
         if portfolio == "yes":
             portfolio = 10
 
@@ -221,10 +221,7 @@ def success(fname):
         print(f"Error: {str(e)}")
         return render_template('error.html')
 
-    finally:
-        conn.close()
-
-    return render_template('success.html', fname=fname,currentPercentage=currentPercentage)
+    return render_template('success.html', fname=fname,currentPercentage=currentPercentage )
 
 if __name__ == '__main__':
     host = os.environ.get('FLASK_HOST', '0.0.0.0')
