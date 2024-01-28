@@ -1,0 +1,1 @@
+   fname, lname, age, legacy, internships, competitions, leadership, state, citizenship, householdIncome, financialAid, weightedGPA, unweightedGPA,satScores, actScores, apCourses, sportsParticipation, volunteerHours, clubsParticipated, clubsLed, studentCouncil, valedictorian, artsParticipation, portfolio

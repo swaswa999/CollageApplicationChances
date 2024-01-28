@@ -3,9 +3,9 @@ import os
 from flask import Flask,render_template, redirect, request, url_for
 import sqlite3
 
-conn = sqlite3.connect('collageapplications.db')
-
+conn = sqlite3.connect('collageapplications.db', check_same_thread=False)
 cursor = conn.cursor()
+
 create_table_query = """
 CREATE TABLE IF NOT EXISTS applications (
     fname TEXT,
@@ -15,12 +15,12 @@ CREATE TABLE IF NOT EXISTS applications (
     internships INTEGER,
     competitions INTEGER,
     leadership INTEGER,
-    state TEXT,
-    citizenship TEXT,
-    HouseholdIncome INTEGER,
+    state TEXT,  -- or state_code TEXT
+    citizenship TEXT,  -- or citizenship_code TEXT
+    householdIncome INTEGER,
     financialAid TEXT,
     weightedGPA REAL,
-    Unweighted REAL,
+    unweightedGPA REAL,
     satScores INTEGER,
     actScores INTEGER,
     apCourses INTEGER,
@@ -28,16 +28,14 @@ CREATE TABLE IF NOT EXISTS applications (
     volunteerHours TEXT,
     clubsParticipated INTEGER,
     clubsLed INTEGER,
-    studentCouncil TEXT,
+    studentCouncil INTEGER,
     valedictorian INTEGER,
-    artsParticipation TEXT,
+    artsParticipation INTEGER,
     portfolio TEXT
 )"""
 
 cursor.execute(create_table_query)
 conn.commit()
-conn.close()
-
 
 app = Flask(__name__)
 
@@ -47,6 +45,9 @@ def home():
 
 @app.route('/application', methods=['GET', 'POST'])
 def index():
+    conn = sqlite3.connect('collageapplications.db', check_same_thread=False)
+    cursor = conn.cursor()
+
     if request.method == 'POST':
         try:
             fname = request.form.get('fname')
@@ -58,36 +59,52 @@ def index():
             leadership = int(request.form.get('leadership'))
             state = request.form.get('state')
             citizenship = request.form.get('citizenship')
-            household_income = int(request.form.get('HouseholdIncome'))
-            weighted_gpa = float(request.form.get('weightedGPA'))
-            unweighted_gpa = float(request.form.get('unweightedGPA'))
-            sat_scores = int(request.form.get('satScores'))
-            act_scores = int(request.form.get('actScores'))
-            ap_courses = int(request.form.get('apCourses'))
-            sports_participation = request.form.get('sportsParticipation')
-            volunteer_hours = request.form.get('volunteerHours')
-            clubs_participated = int(request.form.get('clubsParticipated'))
-            clubs_led = int(request.form.get('clubsLed'))
-            student_council = request.form.get('studentCouncil')
+            householdIncome = int(request.form.get('HouseholdIncome'))
+            financialAid = request.form.get('financialAid')
+            weightedGPA = float(request.form.get('weightedGPA'))
+            unweightedGPA = float(request.form.get('unweightedGPA'))
+            satScores = int(request.form.get('satScores'))
+            actScores = int(request.form.get('actScores'))
+            apCourses = int(request.form.get('apCourses'))
+            sportsParticipation = request.form.get('sportsParticipation')
+            volunteerHours = request.form.get('volunteerHours')
+            clubsParticipated = int(request.form.get('clubsParticipated'))
+            clubsLed = int(request.form.get('clubsLed'))
+            studentCouncil = request.form.get('studentCouncil')
             valedictorian = int(request.form.get('valedictorian')) #CHECK FOR MUL
-            arts_participation = request.form.get('artsParticipation') #CHECK FOR MULTIOUTPUT
+            artsParticipation = request.form.get('artsParticipation') #CHECK FOR MULTIOUTPUT
             portfolio = request.form.get('portfolio')
 
-            return redirect(url_for('success', fname=fname))  # Assuming you have a 'success' endpoint
+            try:
+                cursor.execute(f"INSERT INTO applications VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                               (fname, lname, age, legacy, internships, competitions, leadership, state, citizenship, householdIncome, financialAid, weightedGPA, unweightedGPA,satScores, actScores, apCourses, sportsParticipation, volunteerHours, clubsParticipated, clubsLed, studentCouncil, valedictorian, artsParticipation, portfolio))
+                conn.commit()
+                return redirect(url_for('success', fname=fname))
+            except Exception as e:
+                print(f"Error inserting data: {str(e)}")
+                return render_template('error.html')
 
         except Exception as e:
-            print(str(e))
+            print(f"Error: {str(e)}")
             return render_template('error.html')
+
+        finally:
+            conn.close()
 
     return render_template('index.html')
 
+
 @app.route('/success/<fname>')
 def success(fname):
+    cursor.execute("SELECT * FROM applications")
+    print("\033[H\033[J", end="")
+    print(cursor.fetchall())
+    conn.commit()
+    conn.close()
+
     return render_template('success.html', fname=fname)
-
-
 
 if __name__ == '__main__':
     host = os.environ.get('FLASK_HOST', '0.0.0.0')
     port = int(os.environ.get('FLASK_PORT', 81))
-    app.run(host=host, port=port, debug=True)
+    app.run(host=host, port=port, debug=True) #REMEMBER TO CHANGE TO FALSE LATER
