@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS applications (
     internships INTEGER,
     competitions INTEGER,
     leadership INTEGER,
-    state TEXT,  -- or state_code TEXT
-    citizenship TEXT,  -- or citizenship_code TEXT
+    state TEXT,
+    citizenship TEXT,
     householdIncome INTEGER,
     financialAid TEXT,
     weightedGPA REAL,
@@ -103,27 +103,27 @@ def success(fname):
         recently_added_record = cursor.fetchone()
         print(recently_added_record)
 
-        internships = (int(recently_added_record[4]) ** 2) / (4 ** 2) * 10
+        internships = (int(recently_added_record[4]) ** 2) / (5 ** 2) * 10
         competitions = (int(recently_added_record[5]) ** 2) / (10 ** 2) * 10
-        clubs_participated = (int(recently_added_record[18]) ** 2) / (5 ** 2) * 10
+        clubs_participated = (int(recently_added_record[18]) ** 2) / (10 ** 2) * 10
 
         if  recently_added_record[22] != "":
             arts_participation =  10
 
         student_council = recently_added_record[20]
         if student_council == "member":
-            student_council =  2
+            student_council =  4
         elif student_council == "vicePresident":
             student_council =  7
         elif student_council == "president":
             student_council =  10
         elif student_council == "no":
-            student_council =  0
+            student_council =  1
 
         clubs_participated =  (clubs_participated ** 2) / (10 ** 2) *10
 
-        clubs_led = (int(recently_added_record[19])**3) / (3**2) *10
-        leadership = int(recently_added_record[6]**3 / (3**2) *10)
+        clubs_led = (int(recently_added_record[19])**2) / (5**2) *10
+        leadership = int(recently_added_record[6]**2 / (15**2) *10)
         citizenship = recently_added_record[8]
 
         financial_aid = recently_added_record[10]
@@ -131,57 +131,100 @@ def success(fname):
             financial_aid =  5
 
         household_income = int(recently_added_record[9])
+        if household_income <= 50000:
+            household_income = 3
+        elif 50001 <= household_income <= 85000:
+            household_income = 5
+        elif 85001 <= household_income <= 100000:
+            household_income = 7
+        elif 100001 <= household_income <= 125000:
+            household_income = 9
+        else:
+            household_income = 10
+
         valedictorian = int(recently_added_record[21])
+        if valedictorian != "":
+            valedictorian = 10
+
         volunteer_hours = recently_added_record[17]
+        if volunteer_hours == 'low':
+            volunteer_hours = 2
+        elif volunteer_hours == 'medium':
+            volunteer_hours =  5
+        elif volunteer_hours == 'high':
+            volunteer_hours =  7
+        elif volunteer_hours == 'extremelyHigh':
+            volunteer_hours =  10
+
         sports_participation = recently_added_record[16]
-        sat_scores = int(recently_added_record[13])
-        act_scores = int(recently_added_record[14])
-        ap_courses = int(recently_added_record[15])
-        unweighted_gpa = float(recently_added_record[12])
-        weighted_gpa = float(recently_added_record[11])
-        portfolio = recently_added_record[23]
+
+        if sports_participation == "none":
+            sports_participation = 1
+        elif sports_participation ==  "provincial":
+            sports_participation =3
+        elif sports_participation ==  "state":
+            sports_participation =5
+        elif sports_participation ==  "national":
+            sports_participation =8
+        elif sports_participation ==  "international":
+            sports_participation = 10
+
+        sat_scores = (int(recently_added_record[13]) / 1600) *10
+        act_scores = (int(recently_added_record[14]) / 36) *10
+        ap_courses = (int(recently_added_record[15]) /38) *10
+        unweighted_gpa = (float(recently_added_record[12]) /4.0) *10
+        weighted_gpa = (float(recently_added_record[11])) /5.0  *10
+        portfolio = recently_added_record[23]  
+        if portfolio == "yes":
+            portfolio = 10
 
         legacy = recently_added_record[3]
         if legacy == "yes":
             legacy = 3
         else:
-            legacy = 0
-    
+            legacy = 1
+
 
         state = recently_added_record[7]
 
         if state ==  "outOfUSA" and citizenship == "noCitizen":
-            currentPercentage =  0.0000085 #14%
+            currentPercentage =  0.000085 #14%
         elif state == "california" and citizenship == "yesCitizen":
-            currentPercentage = 0.000639 # 36%
+            currentPercentage = 0.00639 # 36%
         else:
-            currentPercentage = 0.0000231 # 64%
+            currentPercentage = 0.000231 # 64%
 
 
         #currentPercentage = 0.001775 #56,378 applications
-        currentPercentage *=  internships
-        currentPercentage *=  competitions
-        currentPercentage *=  clubs_participated
-        currentPercentage *=  arts_participation
-        currentPercentage *=  clubs_led
-        currentPercentage *=  leadership
-        currentPercentage *= financial_aid
 
+        currentPercentage +=  internships * 5
+        currentPercentage +=  competitions * 5
+        currentPercentage +=  clubs_participated  *2
+        currentPercentage +=  arts_participation *2
+        currentPercentage +=  clubs_led *4
+        currentPercentage +=  leadership *4
+        currentPercentage += financial_aid *3
+        currentPercentage += household_income *3
+        currentPercentage += sports_participation  *5
+        currentPercentage += sat_scores  *5
+        currentPercentage += act_scores *4
+        currentPercentage += ap_courses  *4
+        currentPercentage += unweighted_gpa *4
+        currentPercentage += weighted_gpa *5
+        currentPercentage += legacy *4
 
-        currentPercentage *= 3
+        currentPercentage /= 6
 
-
-
-
-
+        print(currentPercentage)
         conn.commit()
     except Exception as e:
         print(f"Error: {str(e)}")
         return render_template('error.html')
+
     finally:
         conn.close()
 
-    return render_template('success.html', fname=fname,)
+    return render_template('success.html', fname=fname,currentPercentage=currentPercentage)
 
 if __name__ == '__main__':
     host = os.environ.get('FLASK_HOST', '0.0.0.0')
