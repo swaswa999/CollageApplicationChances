@@ -8,12 +8,11 @@ c. Leadership in CS - 4
 
 Personal Information:
 a. Age - 1
-b. Sex - 2
-c. Race - 2
-d. Birth Nation - 2
+b. State living in - 5
 e. Nationality - 4
 f. Household Salary - 3
 g. Financial Aid - 3
+h. Legacy - 4
 
 Academic Performance:
 a. Weighted GPA - 5
@@ -22,12 +21,6 @@ c. SAT Scores - 5
 d. ACT Scores - 4
 e. Amount of AP Courses - 4
 f. Percentile from School - 4
-
-Recommendations:
-a. Letters of Recommendation
-    Amount: 3 (if all are strong) - 5
-b. Quality of Letter of Recommendation
-    One from guidance counselor - 4
 
 Extracurricular Activities:
 a. Sports
@@ -40,6 +33,7 @@ d. Number of Clubs Led - 4
 Leadership:
 a. Student Council - 5
 b. Valedictorian - 4
+c. SchoolNewspaper -3
 
 Arts:
 a. Arts Participation - 3
