@@ -1,24 +1,26 @@
 VARIABLES FOR CONSIDERATION
 
 
-Field: CS COMPLEATE
+Liniar regretion
+
+Field: CS 
 a. Internships - 5
 b. Winning Competitions - 5
 c. Leadership in CS - 4
 
-Personal Information:  COMPLEATE
+Personal Information:  
 a. Age - 1
 b. Name
 c. Legacy - 4
 
-Living:   COMPLEATE
+Living:   
 a. State living in - 5
 b. Nationality - 4
 c. Household Salary - 3
 d. Financial Aid - 5 //makes your chances low
 
 
-Academic Performance: COMPLEATE
+Academic Performance: 
 a. Weighted GPA - 5
 b. Unweighted GPA - 4
 c. SAT Scores - 5

@@ -96,13 +96,74 @@ def index():
 
 @app.route('/success/<fname>')
 def success(fname):
-    cursor.execute("SELECT * FROM applications")
-    print("\033[H\033[J", end="")
-    print(cursor.fetchall())
-    conn.commit()
-    conn.close()
 
-    return render_template('success.html', fname=fname)
+    try:
+        cursor.execute("SELECT * FROM applications")
+        print("\033[H\033[J", end="")
+        recently_added_record = cursor.fetchone()
+        print(recently_added_record)
+
+
+        legacy = recently_added_record[3] #DONE
+        internships = int(recently_added_record[4]) 
+        competitions = int(recently_added_record[5])
+        clubs_participated = int(recently_added_record[18])
+        arts_participation = recently_added_record[22]
+        student_council = recently_added_record[20]
+        clubs_led = int(recently_added_record[19])
+        leadership = int(recently_added_record[6])
+        state = recently_added_record[7]
+        citizenship = recently_added_record[8]
+        financial_aid = recently_added_record[10]
+        household_income = int(recently_added_record[9])
+        valedictorian = int(recently_added_record[21])
+        volunteer_hours = recently_added_record[17]
+        sports_participation = recently_added_record[16]
+        sat_scores = int(recently_added_record[13])
+        act_scores = int(recently_added_record[14])
+        ap_courses = int(recently_added_record[15])
+        unweighted_gpa = float(recently_added_record[12])
+        weighted_gpa = float(recently_added_record[11])
+        portfolio = recently_added_record[23]
+
+        currentPercentage = 0.0020833
+
+
+
+        if legacy:
+            currentPercentage *= 3
+
+
+        #Legacy increases accseptance by 3X
+        #Internship (creates curve, 4+ = 10, 0=0, 1=2, 2=3)
+        #Compitions Won (creates curve, >6 = 10, 0=0, 1=2, 2=3, 3=4, 4=5)
+        #Leadership oppertunities (creates curve, >6 = 10, 0=0, 1=2, 2=3, 3=4, 4=5)
+        # California 37% Other U.S.	49% 
+
+
+
+        #for yes and no 1/10
+        #create curve for internships  after 3 it does not make sence  after 4=10 0=0
+        # California	37% Other U.S.	49% International	14%
+        # higher the better  avrage is 65,000 (5)  120,000 (10) <50000 (0)
+        # 58% resivie scolarships
+        # 
+
+
+
+
+
+
+
+
+        conn.commit()
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return render_template('error.html')
+    finally:
+        conn.close()
+
+    return render_template('success.html', fname=fname,)
 
 if __name__ == '__main__':
     host = os.environ.get('FLASK_HOST', '0.0.0.0')
