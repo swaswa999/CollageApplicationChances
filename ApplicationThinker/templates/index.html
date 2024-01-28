@@ -26,7 +26,7 @@
     <main id="main">
         <h1>Application info</h1>
         <p>Keep in mind this is not 100% accurate as essays and other things we you may have done contribute to your application as well</p>
-        <p>Following is only for Standford CS</p><br>
+        <p>Following is made towords Standford Comp Science</p><br>
         <form>
 
             <!--GENERAL-->
@@ -36,10 +36,10 @@
             <label for="lname">Last name:</label>
             <input type="text" id="lname" name="lname" required><br>
             <label for="age" >Age:</label>
-            <input type="number" id="age" name="age" min="0" step="1"><br>
+            <input type="number" id="age" name="age" min="0" step="1" max="99" required><br>
 
             <p class="multichoicelable">Are you a Legacy Student</p>
-            <input type="radio" id="yes" name="legacy" value="yes">
+            <input type="radio" id="yes" name="legacy" value="yes" required>
             <label for="yes">Yes</label>
             <input type="radio" id="no" name="legacy" value="no">
             <label for="no">No</label><br>
@@ -48,23 +48,23 @@
 
             <!--INTERNSHIP-->
             <label for="internships">How many internships have you done?</label>
-            <input type="number" id="internships" name="internships" placeholder="Leave blank if none" min="0" step="1"><br>
+            <input type="number" id="internships" name="internships"  min="0" step="1" max="99" required><p class="placeholder">Put 0 if none</p><br>
 
             <!--COMPITITIONS WON-->
             <label for="compititions">Compititions Won:</label>
-            <input type="number" id="compititions" name="compititions" placeholder="Leave blank if none" min="0" step="1"><br>
+            <input type="number" id="compititions" name="compititions" min="0" step="1" max="99" required><p class="placeholder">Put 0 if none</p><br>
 
 
             <!--LEADERSHIP OPERTUNITIES IN CS-->
             <label for="leadership">Leadership Opertunities:</label>
-            <input type="number" id="leadership" name="leadership" placeholder="Leave blank if none" min="0" step="1"><br>
+            <input type="number" id="leadership" name="leadership" min="0" step="1" max="99" required><p class="placeholder">Put 0 if none</p><br>
 
             <!--Living-->
             <h2>Living Situation:</h2>
 
             <!--Where you live-->
             <p class="multichoicelable"> Where do you live?</p>
-            <select name="state" id="state">
+            <select name="state" id="state" required>
                 <option value="OutOfUSA">Outside of USA</option>
                 <option value="alabama">Alabama</option>
                 <option value="alaska">Alaska</option>
@@ -119,46 +119,109 @@
             </select><br>
 
             <!--Natinality-->
-            <p class="multichoicelable">Are you a American Citizen or have a Permanante Resedence?</p>
-            <input type="radio" id="yes" name="citizenship" value="yes">
-            <label for="yes">Yes</label>
-            <input type="radio" id="no" name="citizenship" value="no">
-            <label for="no">No</label><br>
+            <p class="multichoicelable">Are you an American Citizen or have a Permanent Residence?</p>
+            <input type="radio" id="yesCitizen" name="citizenship" value="yes" required>
+            <label for="yesCitizen">Yes</label>
+            <input type="radio" id="noCitizen" name="citizenship" value="no">
+            <label for="noCitizen">No</label><br>
 
             <!--Household Income-->
-            <label for="HouseholdIncome">Household Yearly Income:</label>
-            <input type="number" id="HouseholdIncome" name="HouseholdIncome" min="0" step="1000"><br>
+            <label for="HouseholdIncome" required>Household Yearly Income:</label>
+            <input type="number" id="HouseholdIncome" name="HouseholdIncome" min="0" step="1000" required><br>
 
             <!--Finantial Aid-->
-            <p class="multichoicelable">Will you need Financial Aid?</p>
-            <input type="radio" id="yes" name="financialAid" value="yes">
+            <p class="multichoicelable" >Will you need Financial Aid?</p>
+            <input type="radio" id="yes" name="financialAid" value="yes" required>
             <label for="yes">Yes</label>
-            <input type="radio" id="no" name="financialAid" value="no">
+            <input type="radio" id="no" name="financialAid" value="no" required>
             <label for="no">No</label><br>
 
             <!-- Academic Performance -->
             <h2>Academic Performance:</h2>
 
             <label for="weightedGPA">Weighted GPA:</label>
-            <input type="number" id="weightedGPA" name="weightedGPA" min="0" step="0.01"><br>
+            <input type="number" id="weightedGPA" name="weightedGPA" min="0" step="0.01" max="5.0"required><br>
 
             <label for="unweightedGPA">Unweighted GPA:</label>
-            <input type="number" id="unweightedGPA" name="unweightedGPA" min="0" step="0.01"><br>
+            <input type="number" id="unweightedGPA" name="unweightedGPA" min="0" step="0.01" max="4.0" required><br>
 
             <label for="satScores">SAT Scores:</label>
-            <input type="number" id="satScores" name="satScores" min="0" step="1"><br>
+            <input type="number" id="satScores" name="satScores" min="0" step="1" max="1600" required><br>
 
             <label for="actScores">ACT Scores:</label>
-            <input type="number" id="actScores" name="actScores" min="0" step="1"><br>
+            <input type="number" id="actScores" name="actScores" min="0" step="1" max="36" required><br>
 
             <label for="apCourses">Amount of AP Courses:</label>
-            <input type="number" id="apCourses" name="apCourses" min="0" step="1"><br>
+            <input type="number" id="apCourses" name="apCourses" min="0" step="1" max="38"required><br>
 
-            <label for="percentile">Percentile from School:</label>
-            <input type="number" id="percentile" name="percentile" min="0" max="100" step="1"><br>
+            <!-- Extracurricular Activities -->
+            <h2>Extracurricular Activities:</h2>
+
+            <label for="sportsParticipation">Sports Level of Participation:</label>
+            <select id="sportsParticipation" name="sportsParticipation" required>
+                <option value="none">None</option>
+                <option value="provincial">Provincial</option>
+                <option value="state">State</option>
+                <option value="national">National</option>
+                <option value="international">International</option>
+            </select><br>
 
 
+            <label for="volunteerHours">Volunteer Hours:</label>
+            <select id="volunteerHours" name="volunteerHours" required>
+                <option value="low">Low (15-20 hours)</option>
+                <option value="medium">Medium (21-40 hours)</option>
+                <option value="high">High (41-100 hours)</option>
+                <option value="extremelyHigh">Extremely High (101+ hours)</option>
+            </select><br>
 
+            <label for="clubsParticipated">Number of Clubs Participated In:</label>
+            <input type="number" id="clubsParticipated" name="clubsParticipated" min="0" step="1" max="99" required><br>
+
+            <label for="clubsLed">Number of Clubs Led:</label>
+            <input type="number" id="clubsLed" name="clubsLed" min="0" step="1" max="99" required><br>
+
+            <!-- Leadership -->
+            <h2>Leadership:</h2>
+
+            <label for="studentCouncil">Student Council:</label>
+            <select id="studentCouncil" name="studentCouncil" required>
+                <option value="no">No</option>
+                <option value="member">Member</option>
+                <option value="president">President</option>
+                <option value="vicePresident">Vice President</option>
+            </select><br>
+
+            <label for="valedictorian">Valedictorian:</label><br>
+            <div class="checkbox" >
+            <input type="checkbox" id="elementary" name="valedictorian" value="elementary">
+            <label for="elementary">Elementary School</label><br>
+            <input type="checkbox" id="middle" name="valedictorian" value="middle">
+            <label for="middle">Middle School</label><br>
+            <input type="checkbox" id="highschool" name="valedictorian" value="highschool">
+            <label for="highschool">High School</label><br>
+            </div>
+
+            <!-- Arts -->
+            <h2>Arts:</h2>
+
+            <label for="artsParticipation">Arts Participation:</label><br>
+            <div class="checkbox">
+            <input type="checkbox" id="visualArts" name="artsParticipation" value="visualArts">
+            <label for="visualArts">Visual Arts</label><br>
+            <input type="checkbox" id="drama" name="artsParticipation" value="drama">
+            <label for="drama">Drama</label><br>
+            <input type="checkbox" id="music" name="artsParticipation" value="music">
+            <label for="music">Music</label><br>
+            </div>
+
+            <label for="portfolio">Portfolio (for arts, design, etc.):</label>
+            <select id="portfolio" name="portfolio">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select><br>
+
+            <input type="submit" value="Get report" />
         </form>
     </main>
     <footer id="footer">

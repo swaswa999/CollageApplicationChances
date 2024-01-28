@@ -56,13 +56,18 @@ body, html {
         padding: 40px ;
         padding-bottom: 10px;
     }
-        .multichoicelable, select, input {
+        .multichoicelable, .placeholder, select, input {
             display: inline-block;
             margin-right: 10px; /* Adjust the margin as needed */
             background-color: black;
             color: antiquewhite;
 
         }
+
+        .checkbox{
+            padding-left: 20px;
+        }
+
 
 
 

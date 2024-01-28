@@ -41,26 +41,3 @@ c. SchoolNewspaper -3
 Arts:
 a. Arts Participation - 3
 b. Portfolio (for arts, design, etc.) - 4
-
-
-
-
-
-
-
-Extracurricular Activities:
-a. Sports
-    Level of participation (None, provincial, state, natinal, internatinal )
-b. Volunteer Hours
-    (15-20 hours: -1, 21-40 hours: -2, 41-100 hours: -4)
-c. Number of Clubs Participated In - 3
-d. Number of Clubs Led - 4
-
-Leadership:
-a. Student Council - 5
-b. Valedictorian - 4
-c. SchoolNewspaper -3
-
-Arts:
-a. Arts Participation - 3
-b. Portfolio (for arts, design, etc.) - 4
