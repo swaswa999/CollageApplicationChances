@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Application Predicter</title>
+    <title>Application Predictor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/x-icon">
 </head>
@@ -16,15 +16,28 @@
             <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="capLogo">
         </a>
         <ul id="list">
-            <li>CS Application Predicter</li>
+            <li id="li">CS Application Predictor</li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('index') }}">Get Started</a></li>
-
         </ul>
     </header>
 
     <main id="main">
+        <section id="welcome">
+            <h1>Welcome to the CS Application Predictor!</h1>
+            <p>Make informed decisions about your college applications with our advanced prediction tool. Discover your estimated acceptance chances based on various factors.</p>
+        </section>
 
+        <section id="how-it-works">
+            <h2>How It Works</h2>
+            <p>Provide details about your achievements, extracurricular activities, and more. Our predictor will analyze your profile and give you an estimate of your acceptance chances.</p>
+        </section>
+
+        <section id="get-started">
+            <h2>Get Started</h2>
+            <p>Ready to explore your college application journey? Click on "Get Started" to begin the prediction process and gain insights into your potential success!</p>
+            <a class="button" href="{{ url_for('index') }}">Get Started</a>
+        </section>
     </main>
 
     <footer id="footer">

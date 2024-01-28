@@ -16,7 +16,7 @@
             <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="capLogo">
         </a>
         <ul id="list">
-            <li>CS Application Predicter</li>
+            <li id="li">CS Application Predicter</li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('index') }}">Get Started</a></li>
 
@@ -24,10 +24,28 @@
     </header>
 
     <main id="main">
-        <body>
+        <div id="greeting-section">
             <h1>Hello, {{ fname }}!</h1>
-            <p>Your current percentage is: {{ currentPercentage }}</p>
-        </body>
+            <p>Welcome to the CS Application Predictor.</p>
+            <p>Discover your potential acceptance percentage to your desired program based on your application details.</p>
+        </div>
+
+        <div id="result-section">
+            <h2>Your Current Application Status:</h2>
+            <p>Your current percentage is: {{ currentPercentage }}%</p>
+            <p>This score is calculated considering various factors such as academic achievements, extracurricular activities, and more.</p>
+        </div>
+
+        <div id="tips-section">
+            <h2>Tips for Improvement:</h2>
+            <p>While the predictor provides an estimate, consider enhancing your application with the following tips:</p>
+            <ul>
+                <li>Focus on boosting academic performance, especially in standardized tests like SATs and ACTs.</li>
+                <li>Showcase leadership skills through active participation in clubs and leadership roles.</li>
+                <li>Highlight any achievements in internships, competitions, and volunteer work.</li>
+                <li>Ensure a well-rounded application by showcasing diverse talents, such as arts participation or sports achievements.</li>
+            </ul>
+        </div>
     </main>
 
     <footer id="footer">
