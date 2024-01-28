@@ -103,18 +103,33 @@ def success(fname):
         recently_added_record = cursor.fetchone()
         print(recently_added_record)
 
+        internships = (int(recently_added_record[4]) ** 2) / (4 ** 2) * 10
+        competitions = (int(recently_added_record[5]) ** 2) / (10 ** 2) * 10
+        clubs_participated = (int(recently_added_record[18]) ** 2) / (5 ** 2) * 10
 
-        legacy = recently_added_record[3] #DONE
-        internships = int(recently_added_record[4]) 
-        competitions = int(recently_added_record[5])
-        clubs_participated = int(recently_added_record[18])
-        arts_participation = recently_added_record[22]
+        if  recently_added_record[22] != "":
+            arts_participation =  10
+
         student_council = recently_added_record[20]
-        clubs_led = int(recently_added_record[19])
-        leadership = int(recently_added_record[6])
-        state = recently_added_record[7]
+        if student_council == "member":
+            student_council =  2
+        elif student_council == "vicePresident":
+            student_council =  7
+        elif student_council == "president":
+            student_council =  10
+        elif student_council == "no":
+            student_council =  0
+
+        clubs_participated =  (clubs_participated ** 2) / (10 ** 2) *10
+
+        clubs_led = (int(recently_added_record[19])**3) / (3**2) *10
+        leadership = int(recently_added_record[6]**3 / (3**2) *10)
         citizenship = recently_added_record[8]
+
         financial_aid = recently_added_record[10]
+        if financial_aid == "no":
+            financial_aid =  5
+
         household_income = int(recently_added_record[9])
         valedictorian = int(recently_added_record[21])
         volunteer_hours = recently_added_record[17]
@@ -126,31 +141,34 @@ def success(fname):
         weighted_gpa = float(recently_added_record[11])
         portfolio = recently_added_record[23]
 
-        currentPercentage = 0.0020833
+        legacy = recently_added_record[3]
+        if legacy == "yes":
+            legacy = 3
+        else:
+            legacy = 0
+    
+
+        state = recently_added_record[7]
+
+        if state ==  "outOfUSA" and citizenship == "noCitizen":
+            currentPercentage =  0.0000085 #14%
+        elif state == "california" and citizenship == "yesCitizen":
+            currentPercentage = 0.000639 # 36%
+        else:
+            currentPercentage = 0.0000231 # 64%
 
 
-
-        if legacy:
-            currentPercentage *= 3
-
-
-        #Legacy increases accseptance by 3X
-        #Internship (creates curve, 4+ = 10, 0=0, 1=2, 2=3)
-        #Compitions Won (creates curve, >6 = 10, 0=0, 1=2, 2=3, 3=4, 4=5)
-        #Leadership oppertunities (creates curve, >6 = 10, 0=0, 1=2, 2=3, 3=4, 4=5)
-        # California 37% Other U.S.	49% 
+        #currentPercentage = 0.001775 #56,378 applications
+        currentPercentage *=  internships
+        currentPercentage *=  competitions
+        currentPercentage *=  clubs_participated
+        currentPercentage *=  arts_participation
+        currentPercentage *=  clubs_led
+        currentPercentage *=  leadership
+        currentPercentage *= financial_aid
 
 
-
-        #for yes and no 1/10
-        #create curve for internships  after 3 it does not make sence  after 4=10 0=0
-        # California	37% Other U.S.	49% International	14%
-        # higher the better  avrage is 65,000 (5)  120,000 (10) <50000 (0)
-        # 58% resivie scolarships
-        # 
-
-
-
+        currentPercentage *= 3
 
 
 
