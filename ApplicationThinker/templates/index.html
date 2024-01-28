@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniChance</title>
+    <title>Application Predicter</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/x-icon">
 </head>
@@ -17,6 +17,7 @@
         </a>
 
         <ul id="list">
+            <li>CS Application Predicter</li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('index') }}">Get Started</a></li>
 
@@ -51,8 +52,8 @@
             <input type="number" id="internships" name="internships"  min="0" step="1" max="99" required><p class="placeholder">Put 0 if none</p><br>
 
             <!--COMPITITIONS WON-->
-            <label for="compititions">Compititions Won:</label>
-            <input type="number" id="compititions" name="compititions" min="0" step="1" max="99" required><p class="placeholder">Put 0 if none</p><br>
+            <label for="competitions">Competitions Won:</label>
+            <input type="number" id="compititions" name="competitions" min="0" step="1" max="99" required><p class="placeholder">Put 0 if none</p><br>
 
 
             <!--LEADERSHIP OPERTUNITIES IN CS-->
@@ -65,7 +66,7 @@
             <!--Where you live-->
             <p class="multichoicelable"> Where do you live?</p>
             <select name="state" id="state" required>
-                <option value="OutOfUSA">Outside of USA</option>
+                <option value="outOfUSA">Outside of USA</option>
                 <option value="alabama">Alabama</option>
                 <option value="alaska">Alaska</option>
                 <option value="arizona">Arizona</option>
@@ -126,7 +127,7 @@
             <label for="noCitizen">No</label><br>
 
             <!--Household Income-->
-            <label for="HouseholdIncome" required>Household Yearly Income:</label>
+            <label for="HouseholdIncome" required>Annual Household Yearly Income:</label>
             <input type="number" id="HouseholdIncome" name="HouseholdIncome" min="0" step="1000" required><br>
 
             <!--Finantial Aid-->
@@ -194,11 +195,11 @@
 
             <label for="valedictorian">Valedictorian:</label><br>
             <div class="checkbox" >
-            <input type="checkbox" id="elementary" name="valedictorian" value="elementary">
+            <input type="checkbox" id="elementary" name="valedictorian" value="1">
             <label for="elementary">Elementary School</label><br>
-            <input type="checkbox" id="middle" name="valedictorian" value="middle">
+            <input type="checkbox" id="middle" name="valedictorian" value="2">
             <label for="middle">Middle School</label><br>
-            <input type="checkbox" id="highschool" name="valedictorian" value="highschool">
+            <input type="checkbox" id="highschool" name="valedictorian" value="4">
             <label for="highschool">High School</label><br>
             </div>
 
