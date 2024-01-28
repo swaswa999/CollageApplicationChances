@@ -25,8 +25,141 @@
 
     <main id="main">
         <h1>Application info</h1>
-        <p>Keep in mind this is not 100% accurate as essays and other things you may have done contribute to your application as well</p>
-        <br>
+        <p>Keep in mind this is not 100% accurate as essays and other things we you may have done contribute to your application as well</p>
+        <p>Following is only for Standford CS</p><br>
+        <form>
+
+            <!--GENERAL-->
+            <h2>Personal Info:</h2>
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname" required><br>
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname" required><br>
+            <label for="age" >Age:</label>
+            <input type="number" id="age" name="age" min="0" step="1"><br>
+
+            <p class="multichoicelable">Are you a Legacy Student</p>
+            <input type="radio" id="yes" name="legacy" value="yes">
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" name="legacy" value="no">
+            <label for="no">No</label><br>
+
+            <h2>Computer Science Info:</h2>
+
+            <!--INTERNSHIP-->
+            <label for="internships">How many internships have you done?</label>
+            <input type="number" id="internships" name="internships" placeholder="Leave blank if none" min="0" step="1"><br>
+
+            <!--COMPITITIONS WON-->
+            <label for="compititions">Compititions Won:</label>
+            <input type="number" id="compititions" name="compititions" placeholder="Leave blank if none" min="0" step="1"><br>
+
+
+            <!--LEADERSHIP OPERTUNITIES IN CS-->
+            <label for="leadership">Leadership Opertunities:</label>
+            <input type="number" id="leadership" name="leadership" placeholder="Leave blank if none" min="0" step="1"><br>
+
+            <!--Living-->
+            <h2>Living Situation:</h2>
+
+            <!--Where you live-->
+            <p class="multichoicelable"> Where do you live?</p>
+            <select name="state" id="state">
+                <option value="OutOfUSA">Outside of USA</option>
+                <option value="alabama">Alabama</option>
+                <option value="alaska">Alaska</option>
+                <option value="arizona">Arizona</option>
+                <option value="arkansas">Arkansas</option>
+                <option value="california">California</option>
+                <option value="colorado">Colorado</option>
+                <option value="connecticut">Connecticut</option>
+                <option value="delaware">Delaware</option>
+                <option value="florida">Florida</option>
+                <option value="georgia">Georgia</option>
+                <option value="hawaii">Hawaii</option>
+                <option value="idaho">Idaho</option>
+                <option value="illinois">Illinois</option>
+                <option value="indiana">Indiana</option>
+                <option value="iowa">Iowa</option>
+                <option value="kansas">Kansas</option>
+                <option value="kentucky">Kentucky</option>
+                <option value="louisiana">Louisiana</option>
+                <option value="maine">Maine</option>
+                <option value="maryland">Maryland</option>
+                <option value="massachusetts">Massachusetts</option>
+                <option value="michigan">Michigan</option>
+                <option value="minnesota">Minnesota</option>
+                <option value="mississippi">Mississippi</option>
+                <option value="missouri">Missouri</option>
+                <option value="montana">Montana</option>
+                <option value="nebraska">Nebraska</option>
+                <option value="nevada">Nevada</option>
+                <option value="new_hampshire">New Hampshire</option>
+                <option value="new_jersey">New Jersey</option>
+                <option value="new_mexico">New Mexico</option>
+                <option value="new_york">New York</option>
+                <option value="north_carolina">North Carolina</option>
+                <option value="north_dakota">North Dakota</option>
+                <option value="ohio">Ohio</option>
+                <option value="oklahoma">Oklahoma</option>
+                <option value="oregon">Oregon</option>
+                <option value="pennsylvania">Pennsylvania</option>
+                <option value="rhode_island">Rhode Island</option>
+                <option value="south_carolina">South Carolina</option>
+                <option value="south_dakota">South Dakota</option>
+                <option value="tennessee">Tennessee</option>
+                <option value="texas">Texas</option>
+                <option value="utah">Utah</option>
+                <option value="vermont">Vermont</option>
+                <option value="virginia">Virginia</option>
+                <option value="washington">Washington</option>
+                <option value="west_virginia">West Virginia</option>
+                <option value="wisconsin">Wisconsin</option>
+                <option value="wyoming">Wyoming</option>
+            </select><br>
+
+            <!--Natinality-->
+            <p class="multichoicelable">Are you a American Citizen or have a Permanante Resedence?</p>
+            <input type="radio" id="yes" name="citizenship" value="yes">
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" name="citizenship" value="no">
+            <label for="no">No</label><br>
+
+            <!--Household Income-->
+            <label for="HouseholdIncome">Household Yearly Income:</label>
+            <input type="number" id="HouseholdIncome" name="HouseholdIncome" min="0" step="1000"><br>
+
+            <!--Finantial Aid-->
+            <p class="multichoicelable">Will you need Financial Aid?</p>
+            <input type="radio" id="yes" name="financialAid" value="yes">
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" name="financialAid" value="no">
+            <label for="no">No</label><br>
+
+            <!-- Academic Performance -->
+            <h2>Academic Performance:</h2>
+
+            <label for="weightedGPA">Weighted GPA:</label>
+            <input type="number" id="weightedGPA" name="weightedGPA" min="0" step="0.01"><br>
+
+            <label for="unweightedGPA">Unweighted GPA:</label>
+            <input type="number" id="unweightedGPA" name="unweightedGPA" min="0" step="0.01"><br>
+
+            <label for="satScores">SAT Scores:</label>
+            <input type="number" id="satScores" name="satScores" min="0" step="1"><br>
+
+            <label for="actScores">ACT Scores:</label>
+            <input type="number" id="actScores" name="actScores" min="0" step="1"><br>
+
+            <label for="apCourses">Amount of AP Courses:</label>
+            <input type="number" id="apCourses" name="apCourses" min="0" step="1"><br>
+
+            <label for="percentile">Percentile from School:</label>
+            <input type="number" id="percentile" name="percentile" min="0" max="100" step="1"><br>
+
+
+
+        </form>
     </main>
     <footer id="footer">
         <p>&copy; 2023 SwayamShrimali</p>
