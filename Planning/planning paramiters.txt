@@ -1,0 +1,46 @@
+VARIABLES FOR CONSIDERATION
+
+
+Field: CS
+a. Internships - 5
+b. Winning Competitions - 5
+c. Leadership in CS - 4
+
+Personal Information:
+a. Age - 1
+b. Sex - 2
+c. Race - 2
+d. Birth Nation - 2
+e. Nationality - 4
+f. Household Salary - 3
+g. Financial Aid - 3
+
+Academic Performance:
+a. Weighted GPA - 5
+b. Unweighted GPA - 4
+c. SAT Scores - 5
+d. ACT Scores - 4
+e. Amount of AP Courses - 4
+f. Percentile from School - 4
+
+Recommendations:
+a. Letters of Recommendation
+    Amount: 3 (if all are strong) - 5
+b. Quality of Letter of Recommendation
+    One from guidance counselor - 4
+
+Extracurricular Activities:
+a. Sports
+    Level of participation (Provincial - 3, State - 4, International - 5)
+b. Volunteer Hours
+    (15-20 hours: -1, 21-40 hours: -2, 41-100 hours: -4)
+c. Number of Clubs Participated In - 3
+d. Number of Clubs Led - 4
+
+Leadership:
+a. Student Council - 5
+b. Valedictorian - 4
+
+Arts:
+a. Arts Participation - 3
+b. Portfolio (for arts, design, etc.) - 4
