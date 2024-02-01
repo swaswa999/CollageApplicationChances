@@ -1,4 +1,4 @@
-# GunnHacks24
+# CollageApplicationChances
 ## Inspiration
 
 When I was looking for how to increase my odds of getting into the Uni program I wanted to get into, I realized most data is misleading and overinflated,  This over-inflation of numbers led to anxiety and the thought that it is not possible to do.
